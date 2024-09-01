@@ -4,6 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { PatientModule } from './patient/patient.module';
 import { PatientModel } from './patient/patient.model';
 import { AdministrationModule } from './administration/administration.module';
+import { DoctorsModule } from './doctors/doctors.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { AdministrationModule } from './administration/administration.module';
       ]
     }),
     PatientModule,
-    AdministrationModule
+    AdministrationModule,
+    DoctorsModule
   ]
 })
 export class AppModule {}
