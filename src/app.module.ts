@@ -5,6 +5,8 @@ import { PatientModule } from './patient/patient.module';
 import { PatientModel } from './patient/patient.model';
 import { AdministrationModule } from './administration/administration.module';
 import { DoctorsModule } from './doctors/doctors.module';
+import { AdministrationModel } from './administration/administration.model';
+import { DoctorsModel } from './doctors/doctors.model';
 
 @Module({
   imports: [
@@ -20,7 +22,9 @@ import { DoctorsModule } from './doctors/doctors.module';
       password: process.env.DB_PASSWORD,
       autoLoadModels: true,
       models: [
-        PatientModel
+        PatientModel,
+        AdministrationModel,
+        DoctorsModel
       ]
     }),
     PatientModule,

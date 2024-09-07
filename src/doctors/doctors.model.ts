@@ -1,7 +1,7 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
-@Table({tableName: 'patients'})
-export class PatientModel extends Model<PatientModel> {
+@Table({tableName: 'doctors'})
+export class DoctorsModel extends Model<DoctorsModel> {
     @Column({
         type: DataType.TEXT,
         primaryKey: true,
@@ -52,16 +52,10 @@ export class PatientModel extends Model<PatientModel> {
     }) birthday: Date
 
     @Column({
-        type: DataType.ENUM('A','B','AB','O'),
+        type: DataType.BOOLEAN,
         unique: false,
-        allowNull: false
-    }) blood_group: string
-
-    @Column({
-        type: DataType.DATE,
-        unique: false,
-        allowNull: false
-    }) last_attend: Date
+        defaultValue: true
+    }) activated: boolean
 
     @Column({
         type: DataType.BOOLEAN,

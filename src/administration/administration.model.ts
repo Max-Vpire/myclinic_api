@@ -28,10 +28,10 @@ export class AdministrationModel extends Model<AdministrationModel> {
     }) middlename: string
 
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.TEXT,
         unique: true,
         allowNull: false
-    }) number: number
+    }) number: string
 
     @Column({
         type: DataType.TEXT,
@@ -40,9 +40,20 @@ export class AdministrationModel extends Model<AdministrationModel> {
     }) password: string
 
     @Column({
-        type: DataType.ENUM('male', 'female'),
+        type: DataType.ENUM('Male', 'Female'),
         unique: false,
         allowNull: false
     }) gender: string
-    
+
+    @Column({
+        type: DataType.BOOLEAN,
+        unique: false,
+        defaultValue: true
+    }) activated: boolean
+
+    @Column({
+        type: DataType.BOOLEAN,
+        unique: false,
+        defaultValue: false
+    }) deleted: boolean 
 }
