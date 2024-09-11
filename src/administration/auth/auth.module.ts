@@ -1,6 +1,6 @@
 import { forwardRef, Module } from '@nestjs/common';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { AdministrationAuthController } from './auth.controller';
+import { AdministrationAuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { AdministrationModule } from '../administration.module';
 
@@ -15,7 +15,7 @@ import { AdministrationModule } from '../administration.module';
       }
     }),
   ],
-  controllers: [AuthController],
-  providers: [AuthService]
+  controllers: [AdministrationAuthController],
+  providers: [AdministrationAuthService]
 })
-export class AuthModule {}
+export class AdministrationAuthModule {}

@@ -3,7 +3,7 @@ import { AdministrationLoginDto } from './dto/aministration-login.dto';
 import { AdministrationAuthService } from './auth.service';
 
 @Controller('auth')
-export class AuthController {
+export class AdministrationAuthController {
     constructor(private administrationAuthService: AdministrationAuthService) { }
     @Post('login')
     async Login(@Body() dto: AdministrationLoginDto) {
