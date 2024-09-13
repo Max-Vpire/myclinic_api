@@ -81,7 +81,8 @@ export class AdministrationService {
                     {
                         surname: { [Op.like]: `%${query}%` }
                     }
-                ]
+                ],
+                deleted: false
             }
         })
             .then(administrations => {

@@ -30,6 +30,12 @@ export class DoctorsModel extends Model<DoctorsModel> {
     @Column({
         type: DataType.TEXT,
         unique: true,
+        allowNull: false,
+    }) avatar: string
+
+    @Column({
+        type: DataType.TEXT,
+        unique: true,
         allowNull: false
     }) number: string
 
