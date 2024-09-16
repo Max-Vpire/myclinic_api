@@ -5,19 +5,30 @@ import { CreateDoctorDto } from './dto/create-doctor.dto';
 import { v4 } from 'uuid';
 import * as bcrypt from 'bcrypt';
 import { Op } from 'sequelize';
+import { MinioClientService } from 'src/minio-client/minio-client.service';
+import { BufferedFile } from 'src/minio-client/file.model';
 
 @Injectable()
 export class DoctorsService {
     constructor(
-        @InjectModel(DoctorsModel) private doctorsModel: typeof DoctorsModel
+        @InjectModel(DoctorsModel) private doctorsModel: typeof DoctorsModel,
+        private minioService: MinioClientService
     ) {}
 
-    async create(dto: CreateDoctorDto) {
+    async create(dto: CreateDoctorDto, image: BufferedFile) {
+        const path = await this.minioService.upload(image)
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+        });
         const hashedPasword = await bcrypt.hash(dto.password, 10)
         const doctor = await this.doctorsModel.create({
             ...dto,
             id: v4(),
-            password: hashedPasword
+            password: hashedPasword,
+            avatar: path.url
         })
         .then(doctor => {
             return doctor;

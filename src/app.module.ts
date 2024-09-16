@@ -7,6 +7,7 @@ import { AdministrationModule } from './administration/administration.module';
 import { DoctorsModule } from './doctors/doctors.module';
 import { AdministrationModel } from './administration/administration.model';
 import { DoctorsModel } from './doctors/doctors.model';
+import { MinioClientModule } from './minio-client/minio-client.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { DoctorsModel } from './doctors/doctors.model';
     }),
     PatientModule,
     AdministrationModule,
-    DoctorsModule
+    DoctorsModule,
+    MinioClientModule
   ]
 })
 export class AppModule {}
